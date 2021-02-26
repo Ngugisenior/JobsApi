@@ -1,9 +1,26 @@
+.container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .jobs{
     border-style: dashed;
     border-width: 2px;
     border-color: dodgerblue;
     margin:20px;
     min-height:300px;
+    max-width: 400px;
+    display:flex;
+    justify-content: center;
+}
+.job_desc{
+    display:flex;
+    flex-flow: column;
+    justify-content: center;
+    place-items: center;
+}
+.job_desc h1{
+    font-size: 20px;
 }
 
 .company_logo{
@@ -14,4 +31,6 @@
 .jobs_img{
     max-height: 100px;
     max-width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
 }

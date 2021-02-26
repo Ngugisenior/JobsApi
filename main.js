@@ -4,6 +4,10 @@ const App = () =>{
 
     const f = [
         {
+            name: 'img',
+            class: 'company_logo'
+        },        
+        {
             name: 'h1',
             class: 'company',
         },
@@ -15,10 +19,7 @@ const App = () =>{
             name: 'p',
             class: 'location'
         },
-        {
-            name: 'img',
-            class: 'company_logo'
-        },
+
         {
             name: 'a',
             class: 'url'
@@ -26,25 +27,30 @@ const App = () =>{
         {
             name: 'BUTTON',
             class: 'tags'
-            }
-    ];  
+        }
+    ]; 
+    
+    listJobs();
 
-    (async function getJobs(){
-        const d = await fetch(url)
-                    .then(response => response.json())
-                    .then(jobs => {
-                       //console.log(jobs.length);
-                    
-                       dataView(jobs);
-                    });   
-                    
-    })();
+    function listJobs(){
+       // document.body.innerHTML ='';
+        (async function getJobs(){
+            const d = await fetch(url)
+                .then(response => response.json())
+                .then(jobs => {
+                //console.log(jobs.length);
+                dataView(jobs);
+            });   
+                        
+        })();
+    }
 
 
 
     function getFetchJobs(x){
+        //document.body.innerHTML = '';
         //console.log(x);
-        document.body.innerHTML ='' ;
+       // m.innerHTML ='' ;
          (async function fetchJobsByTags(){
             const response = await fetch(x)
             const data = await response.json();
@@ -56,6 +62,8 @@ const App = () =>{
 
 
     function dataView(jobs){
+        var m = document.getElementsByClassName('container')[0];
+        m.innerHTML = ''
         for(let i = 1; i < jobs.length; i++){
                             
             if(jobs[i].company === "" && jobs[i].company_logo === "" || jobs[i].url === ""){
@@ -67,11 +75,11 @@ const App = () =>{
                 //console.log(jobs[i]);
                 var y = document.createElement('div');
                 y.setAttribute('class','jobs');
-
-                
+                const rf = document.createElement('div');
+                rf.setAttribute('class','job_desc')
                 for(let j = 0; j < f.length; j++){
 
-
+                    
                     if(f[j].class == 'company_logo'){
                         var dv = document.createElement('div');
                         dv.setAttribute('class','jobs_img');
@@ -80,6 +88,7 @@ const App = () =>{
                         x.setAttribute('class',f[j].class);
                         x.setAttribute('src', jobs[i][f[j].class]);
                         dv.appendChild(x);
+                        //rf.appendChild(x)
                         y.appendChild(dv);
                     }
                     else if(f[j].class == 'url'){
@@ -91,7 +100,7 @@ const App = () =>{
                         x.setAttribute('href', jobs[i][f[j].class]);
                         x.setAttribute('target', '_blank');
                         x.appendChild(btn);
-                        y.appendChild(x);
+                        rf.appendChild(x);
                     }
                     else if(f[j].class == 'tags'){
                         var l = document.createElement('ul')
@@ -112,18 +121,23 @@ const App = () =>{
                             //li.appendChild(x);
                             l.appendChild(x);
                         }
-                        y.appendChild(l);
+                        rf.appendChild(l)
+                        //y.appendChild(l);
                     }
                     
                     else{
                         var x = document.createElement(f[j].name);
                         x.setAttribute('class',f[j].class);
                         x.innerHTML = jobs[i][f[j].class];
-                        y.appendChild(x);
+                        rf.appendChild(x)
+                       // y.appendChild(x);
 
                     }
+                    
                 }
-                document.body.appendChild(y);
+                y.appendChild(rf);
+                m.appendChild(y)
+               // document.body.appendChild(y);
             }                                
         }
     }
@@ -131,8 +145,15 @@ const App = () =>{
 }
 
 
+window.addEventListener('DOMContentLoaded',function(){
+    const m = document.createElement('main');
+    m.setAttribute('class', 'container');
+    document.body.appendChild(m);
+    App();
+})
 
-App();
+
+
     
 
 
