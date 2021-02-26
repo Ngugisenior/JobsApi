@@ -13,6 +13,10 @@
     display:flex;
     flex-flow: column;
     justify-content: center;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow:  5px 5px 10px #5a5a5a,
+                 -5px -5px 10px #ffffff;
 }
 .job_desc .tags_list{
     display:flex;
