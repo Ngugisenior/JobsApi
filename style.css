@@ -1,0 +1,17 @@
+.jobs{
+    border-style: dashed;
+    border-width: 2px;
+    border-color: dodgerblue;
+    margin:20px;
+    min-height:300px;
+}
+
+.company_logo{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.jobs_img{
+    max-height: 100px;
+    max-width: 100px;
+}
