@@ -33,12 +33,11 @@ const App = () =>{
     listJobs();
 
     function listJobs(){
-       // document.body.innerHTML ='';
+
         (async function getJobs(){
             const d = await fetch(url)
                 .then(response => response.json())
                 .then(jobs => {
-                //console.log(jobs.length);
                 dataView(jobs);
             });   
                         
@@ -48,13 +47,11 @@ const App = () =>{
 
 
     function getFetchJobs(x){
-        //document.body.innerHTML = '';
-        //console.log(x);
-       // m.innerHTML ='' ;
+
          (async function fetchJobsByTags(){
             const response = await fetch(x)
             const data = await response.json();
-            //console.log(data);
+
             dataView(data);
             
         })();
@@ -75,6 +72,8 @@ const App = () =>{
                 y.setAttribute('class','jobs');
                 const rf = document.createElement('div');
                 rf.setAttribute('class','job_desc')
+
+
                 for(let j = 0; j < f.length; j++){
 
                     
@@ -85,23 +84,31 @@ const App = () =>{
                         var x = document.createElement(f[j].name);
                         x.setAttribute('class',f[j].class);
                         x.setAttribute('src', jobs[i][f[j].class]);
+
+                        //click event
                         x.addEventListener('click',function(event){
                             event.preventDefault();
                             dataViewByCompany(jobs[i].company);
-                        })
+                        });
+
                         dv.appendChild(x);
-                        //rf.appendChild(x)
+
                         y.appendChild(dv);
                     }
                     else if(f[j].class == 'url'){
+                        
                         var x = document.createElement(f[j].name);
                         var btn = document.createElement('BUTTON');
-                        btn.setAttribute('class', 'apply');
                         var t = document.createTextNode("Apply");
-                        btn.appendChild(t);
+
+                        btn.setAttribute('class', 'apply');
+                        
+                       
                         x.setAttribute('class',f[j].class);
                         x.setAttribute('href', jobs[i][f[j].class]);
-                        x.setAttribute('target', '_blank');
+                        x.setAttribute('target', '_blank'); 
+
+                        btn.appendChild(t);
                         x.appendChild(btn);
                         rf.appendChild(x);
                     }
@@ -155,12 +162,10 @@ const App = () =>{
         (async function fetchJobsByTags(){
             const response = await fetch(url)
             const jobs = await response.json();
-            //console.log(jobs);
-           
-                //console.log(jobs[i]);
+
 
             for(let i = 0; i < jobs.length; i++){
-                //console.log(jobs[i]);
+
                 var y = document.createElement('div');
                 y.setAttribute('class','jobs');
                 const rf = document.createElement('div');
