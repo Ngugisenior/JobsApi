@@ -203,7 +203,7 @@ const App = () =>{
     /** Get Unique Tags */
     function getUniqueTags(data){
         const arr = []
-        for(var i = 0; i < data.length/6; i++){
+        for(var i = 0; i < (data.length/25); i++){
 
             for(var l  in data[i].tags){
                 arr.push((data[i].tags[l]).toLowerCase());
@@ -294,6 +294,7 @@ const App = () =>{
  * TODO: serch Bar for tags or company or job names
  * TODO: Live Search for Jobs
  * TODO: DropDown Tags List
+ * TODO: order tags alphabetically
 */
 App();
 
