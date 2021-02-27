@@ -70,22 +70,18 @@ const App = () =>{
             }
 
             else{
-                var y = document.createElement('div');
-                y.setAttribute('class','jobs');
-                const rf = document.createElement('div');
-                rf.setAttribute('class','job_desc')
-
-                createElements(jobs[i], y, rf);
-
-                y.appendChild(rf);
-                m.appendChild(y)
-
+                createElements(jobs[i],m);
             }                                
         }
     }
 
     // create html elements
-    function createElements(job, y, rf){
+    function createElements(job,m){
+        var y = document.createElement('div');
+        y.setAttribute('class','jobs');
+        y.setAttribute('draggable', 'true');
+        const rf = document.createElement('div');
+        rf.setAttribute('class','job_desc')
 
         for(let j = 0; j < f.length; j++){
 
@@ -156,7 +152,14 @@ const App = () =>{
             }
             
         }
+
+        y.appendChild(rf);
+        m.appendChild(y)
     }
+
+
+
+   
     
 
     // view Jobs by Company Names
@@ -172,18 +175,11 @@ const App = () =>{
 
 
             for(let i = 0; i < jobs.length; i++){
-
-                var y = document.createElement('div');
-                y.setAttribute('class','jobs');
-                const rf = document.createElement('div');
-                rf.setAttribute('class','job_desc');
    
                if(jobs[i].company === str){
-                   const rf = document.createElement('div');
-                   rf.setAttribute('class','job_desc');
-                   createElements(jobs[i], y, rf);
-                   y.appendChild(rf);
-                   m.appendChild(y);
+
+                   createElements(jobs[i],m);
+
                }
 
             }
@@ -219,23 +215,21 @@ const App = () =>{
         const e = document.getElementsByClassName('tags_section')[0];
 
         const arr_new = Array.from(new Set(arr))
-        const div = document.createElement('div');
+        //const div = document.createElement('div');
+        //div.setAttribute('tags_list');
        arr_new.forEach(tag =>{
                 //console.log(tag);
                 const btn = document.createElement('button');
                 btn.setAttribute('class', 'tags');
                 const text = document.createTextNode(tag);
                 btn.addEventListener('click',function(){
-                    //event.preventDefault();
-                    //const j = getByTagsName(tag);
-                    //dataView(j);
                     getByTagsName(tag);
                 })
                 btn.appendChild(text);
-                div.appendChild(btn);
+                e.appendChild(btn);
                
         }) 
-        e.appendChild(div);
+        //e.appendChild(div);
     }
 
     /**Getting Tags By name */
@@ -251,17 +245,10 @@ const App = () =>{
                   
                     for(let j in data[i].tags){
 
-                        var y = document.createElement('div');
-                        y.setAttribute('class','jobs');
-                        const rf = document.createElement('div');
-                        rf.setAttribute('class','job_desc');
-
                        if(data[i].tags[j] === tag){
-                           const rf = document.createElement('div');
-                           rf.setAttribute('class','job_desc');
-                           createElements(data[i], y, rf);
-                           y.appendChild(rf);
-                           m.appendChild(y);
+
+                           createElements(data[i],m);
+
                        }
                     }
                 }
@@ -272,6 +259,8 @@ const App = () =>{
 
     window.addEventListener('DOMContentLoaded',function(){
         listJobs();
+        draggables('container');
+        draggables('tags_section')
     });
 
 
@@ -283,6 +272,18 @@ const App = () =>{
     })
 
 
+
+
+    /** Draggables */
+    function draggables(str){
+        
+        const container = document.querySelector('.'+str);
+        
+        new Sortable(container, {
+            animation:300
+        })
+    }   
+
 }
 
 
@@ -293,5 +294,6 @@ const App = () =>{
  * TODO: DropDown Tags List
 */
 App();
+
 
 
