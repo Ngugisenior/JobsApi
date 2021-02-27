@@ -286,6 +286,22 @@ const App = () =>{
         })
     }   
 
+
+ (function jumptoTop(){
+    const totop = document.querySelector('.totop');
+
+    totop.addEventListener('click',function(event){
+        event.preventDefault();
+        window.scroll({
+            top:0,
+            behavior: 'smooth'
+        })
+    });
+
+ })();
+
+ //totop.style = "bottom: "+ window.innerHeight+"px";
+
 }
 
 
@@ -299,6 +315,5 @@ const App = () =>{
  * TODO: select jobs by location
 */
 App();
-
 
 

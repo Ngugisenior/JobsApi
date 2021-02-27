@@ -1,6 +1,7 @@
 .container{
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 .search_form,
 .container,
@@ -21,6 +22,18 @@
     background-color: #0e010118;
     color: rgb(52, 10, 241);
     padding:10px;
+}
+
+.totop{
+    position:sticky;
+    bottom: 10px;
+    float:right;
+    background-color:dodgerblue;
+    border: none;outline: none;
+    border-radius: 5px;
+    height: 30px;
+    color: #FFF;
+    cursor: pointer;
 }
 
 
@@ -78,6 +91,7 @@
     margin:5px;
     font-size:20px;
     border-radius: 5px;;
+    cursor: pointer;
 }
 .job_desc{
     width: calc(100% -100px);
