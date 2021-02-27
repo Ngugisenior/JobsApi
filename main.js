@@ -203,7 +203,7 @@ const App = () =>{
     /** Get Unique Tags */
     function getUniqueTags(data){
         const arr = []
-        for(var i = 0; i < data.length; i++){
+        for(var i = 0; i < data.length/6; i++){
 
             for(var l  in data[i].tags){
                 arr.push((data[i].tags[l]).toLowerCase());
@@ -214,7 +214,9 @@ const App = () =>{
         console.log(arr.length);
         const e = document.getElementsByClassName('tags_section')[0];
 
-        const arr_new = Array.from(new Set(arr))
+        const arr_new = Array.from(new Set(arr));
+
+        
         //const div = document.createElement('div');
         //div.setAttribute('tags_list');
        arr_new.forEach(tag =>{
