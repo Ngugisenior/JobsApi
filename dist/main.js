@@ -177,8 +177,7 @@ const App = () =>{
                 y.setAttribute('class','jobs');
                 const rf = document.createElement('div');
                 rf.setAttribute('class','job_desc');
-
-
+   
                if(jobs[i].company === str){
                    const rf = document.createElement('div');
                    rf.setAttribute('class','job_desc');
@@ -197,7 +196,7 @@ const App = () =>{
         (async function getAll(){
             const response = await fetch(url).then(response => response.json())
             .then(data =>{
-                console.log("data tags")
+                //console.log("data tags")
                 getUniqueTags(data);
             });
         })()
@@ -224,6 +223,7 @@ const App = () =>{
        arr_new.forEach(tag =>{
                 //console.log(tag);
                 const btn = document.createElement('button');
+                btn.setAttribute('class', 'tags');
                 const text = document.createTextNode(tag);
                 btn.addEventListener('click',function(){
                     //event.preventDefault();
@@ -272,17 +272,26 @@ const App = () =>{
 
     window.addEventListener('DOMContentLoaded',function(){
         listJobs();
+    });
+
+
+    $("form").submit(function(){
+        event.preventDefault();
+        var $q = $('.q').val();
+        dataViewByCompany($q);
+        //console.log($q);
     })
 
 
 }
 
 
-
-
-
-
-
+/** 
+ * TODO: Fallback URL for cpmpany Icon
+ * TODO: serch Bar for tags or company or job names
+ * TODO: Live Search for Jobs
+ * TODO: DropDown Tags List
+*/
 App();
 
 

@@ -1,7 +1,37 @@
 .container{
-    display:flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+.search_form,
+.container,
+.jobs,
+.job_desc .tags_list,
+.job_desc,
+.jobs_img,
+.tags_section{
+    display: flex;
+}
+.search_form input{
+    width: 60%;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;;
+    outline: none;
+    border: none;
+    background-color: #0e010118;
+    color: rgb(52, 10, 241);
+    padding:10px;
+}
+
+
+
+.search_form{
+    justify-content:space-evenly;
+    width: 40%;
+}
+.tags_section{
+    width: 100%;
+    flex-wrap: wrap;
 }
 .jobs{
     border-style: dashed;
@@ -10,22 +40,26 @@
     margin:20px;
     min-height:300px;
     width: 400px;
-    display:flex;
     flex-flow: column;
     justify-content: center;
     border-radius: 10px;
     background: #e0e0e0;
-    box-shadow:  5px 5px 10px #5a5a5a,
+    box-shadow:  5px 5px 10px #5a5a5a,  
                  -5px -5px 10px #ffffff;
 }
 .job_desc .tags_list{
-    display:flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 90%;
 }
 
+.search_form button{
+    height:30px;
+}
+
 .apply,
+.tags,
+.search_form button,
 .job_desc .tags{
     color:#FFFFFF;
     background-color: dodgerblue;
@@ -38,7 +72,6 @@
 }
 .job_desc{
     width: calc(100% -100px);
-    display:flex;
     flex-flow: column;
     justify-content: center;
     place-items: center;
@@ -54,7 +87,6 @@
 }
 
 .jobs_img{
-    display:flex;
     justify-content: center;
     max-height: 100px;
     border-radius: 50%;
