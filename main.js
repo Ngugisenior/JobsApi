@@ -295,6 +295,8 @@ const App = () =>{
  * TODO: Live Search for Jobs
  * TODO: DropDown Tags List
  * TODO: order tags alphabetically
+ * TODO: select tags randomly
+ * TODO: select jobs by location
 */
 App();
 
